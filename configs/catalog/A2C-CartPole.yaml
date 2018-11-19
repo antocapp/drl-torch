@@ -1,0 +1,34 @@
+NETWORK:
+  ARCH: "A2C"
+  PARAMS: 
+    state_dim: 4 #depends on environment
+    action_dim : 2 #same as above
+    hidden_size : 256
+    gamma : 0.99
+    optimiser : "Adam"
+    value_lr : 0.001
+    policy_lr : 0.0001
+    load_dir : "/Users/antonio/repo/drl-torch/results/A2C/CartPole/20181111_232719/final" #where to found actor.pkl and critic.pkl
+    conv: False #to deal with image input
+    debug: False #to set logger
+    output_dir: "/Users/antonio/repo/drl-torch/results/A2C/CartPole" #where to save Summary and models .pkl
+    save: True #
+    write: True #to save and show tensorboard
+    test_every: 500 #test every N episode, if 0 no episode is tested
+    test_only: False #this is overwritten by TEST.TEST_ONLY
+
+ENVIRONMENT:
+  NAME: "CartPole"
+
+TRAIN:
+  TRAIN: True
+  ASYNCH: True
+  WORKERS: 4
+  TEST: True
+  SPECS:
+    max_episodes : 10000
+    num_steps : 5 
+
+TEST:
+  TEST_ONLY: False
+  NUMBER: 10
